@@ -414,3 +414,11 @@ section { padding: 30px 0; }
   .mp-name { font-size: 15px; }
   .mp-score { font-size: 28px; }
 }
+
+/* ---- News ---- */
+.news-list { display: flex; flex-direction: column; gap: 10px; }
+.news-item { display: block; text-decoration: none; color: inherit; padding: 14px 16px; }
+.news-item .news-title { font-weight: 600; font-size: 15px; line-height: 1.45; margin-bottom: 8px; }
+.news-item:hover .news-title { color: var(--teal); }
+.news-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.center { text-align: center; }

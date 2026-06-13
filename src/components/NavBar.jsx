@@ -10,6 +10,7 @@ const TABS = [
   { id: 'stars', label: '球星' },
   { id: 'map', label: '主办城市' },
   { id: 'boot', label: '金靴' },
+  { id: 'news', label: '新闻' },
 ]
 
 export default function NavBar({ active, onChange }) {

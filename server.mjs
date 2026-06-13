@@ -12,6 +12,7 @@ import { createServer } from 'node:http'
 import { readFile, stat } from 'node:fs/promises'
 import { extname, join, normalize } from 'node:path'
 import { liveConfig, normalizeFixtures } from './liveSource.mjs'
+import { fetchNews } from './newsSource.mjs'
 
 const PORT = process.env.PORT || 8787
 const ROOT = 'dist'
@@ -23,6 +24,18 @@ const MIME = {
 
 const server = createServer(async (req, res) => {
   const url = req.url || '/'
+
+  if (url.startsWith('/api/news')) {
+    try {
+      const data = await fetchNews()
+      res.setHeader('Content-Type', 'application/json')
+      res.setHeader('Cache-Control', 'public, max-age=300')
+      return res.end(JSON.stringify(data))
+    } catch (e) {
+      res.statusCode = 500
+      return res.end(JSON.stringify({ items: [], error: String(e) }))
+    }
+  }
 
   if (url.startsWith('/api/fixtures')) {
     try {

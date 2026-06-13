@@ -7,6 +7,7 @@ import Predictions from './components/Predictions.jsx'
 import BracketSimulator from './components/BracketSimulator.jsx'
 import Analysis from './components/Analysis.jsx'
 import Stars from './components/Stars.jsx'
+import News from './components/News.jsx'
 import HostMap from './components/HostMap.jsx'
 import GoldenBoot from './components/GoldenBoot.jsx'
 import TeamModal from './components/TeamModal.jsx'
@@ -91,6 +92,7 @@ export default function App() {
           {tab === 'stars' && <Stars />}
           {tab === 'map' && <HostMap />}
           {tab === 'boot' && <GoldenBoot />}
+          {tab === 'news' && <News />}
         </main>
 
         <footer className="foot">
