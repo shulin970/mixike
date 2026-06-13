@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react'
 import { liveConfig, normalizeFixtures } from './liveSource.mjs'
 import { fetchNews } from './newsSource.mjs'
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 // Dev proxy: serves /api/fixtures and /api/news from Vite's Node process so the
 // secret key stays server-side and news is fetched server-side. In production
 // the Cloudflare Functions (functions/api/*) do the same job.
@@ -47,7 +49,7 @@ export default defineConfig(({ mode }) => {
   // Expose non-VITE_ env vars (FD_API_TOKEN, LIVE_SOURCE, ...) to process.env.
   Object.assign(process.env, loadEnv(mode, process.cwd(), ''))
   return {
-    plugins: [react(), apiPlugin()],
+    plugins: [react(), apiPlugin(), cloudflare()],
     server: { open: true, port: 5173 },
-  }
+  };
 })
